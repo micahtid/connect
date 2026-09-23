@@ -125,10 +125,10 @@ class NearbyService extends ChangeNotifier {
         serviceId: _serviceId,
       );
       isAdvertising = advOk;
-      debugPrint('[knkt] startAdvertising → $advOk');
+      debugPrint('[Connect] startAdvertising → $advOk');
     } catch (e) {
       _setStatus('Failed to advertise: $e');
-      debugPrint('[knkt] startAdvertising FAILED: $e');
+      debugPrint('[Connect] startAdvertising FAILED: $e');
       return;
     }
 
@@ -142,10 +142,10 @@ class NearbyService extends ChangeNotifier {
         serviceId: _serviceId,
       );
       isDiscovering = disOk;
-      debugPrint('[knkt] startDiscovery → $disOk');
+      debugPrint('[Connect] startDiscovery → $disOk');
     } catch (e) {
       _setStatus('Failed to discover: $e');
-      debugPrint('[knkt] startDiscovery FAILED: $e');
+      debugPrint('[Connect] startDiscovery FAILED: $e');
       return;
     }
 
@@ -173,7 +173,7 @@ class NearbyService extends ChangeNotifier {
   // ── Nearby callbacks ────────────────────────────────────────────────────
 
   void _onEndpointFound(String endpointId, String name, String serviceId) {
-    debugPrint('[knkt] onEndpointFound: $endpointId ($name)');
+    debugPrint('[Connect] onEndpointFound: $endpointId ($name)');
     discoveredPeers[endpointId] = PeerDevice(
       endpointId: endpointId,
       name: name,
@@ -191,7 +191,7 @@ class NearbyService extends ChangeNotifier {
   }
 
   void _onEndpointLost(String? endpointId) {
-    debugPrint('[knkt] onEndpointLost: $endpointId');
+    debugPrint('[Connect] onEndpointLost: $endpointId');
     if (endpointId != null) {
       discoveredPeers.remove(endpointId);
       onPeerLost?.call(endpointId);
@@ -202,7 +202,7 @@ class NearbyService extends ChangeNotifier {
 
   void _onConnectionInitiated(String endpointId, ConnectionInfo info) {
     debugPrint(
-      '[knkt] onConnectionInitiated: $endpointId (${info.endpointName})',
+      '[Connect] onConnectionInitiated: $endpointId (${info.endpointName})',
     );
     _pendingNames[endpointId] = info.endpointName;
     _nearby.acceptConnection(
@@ -214,7 +214,7 @@ class NearbyService extends ChangeNotifier {
   }
 
   void _onConnectionResult(String endpointId, Status status) {
-    debugPrint('[knkt] onConnectionResult: $endpointId → ${status.name}');
+    debugPrint('[Connect] onConnectionResult: $endpointId → ${status.name}');
     if (status == Status.CONNECTED) {
       final name = _pendingNames[endpointId] ?? endpointId;
       connectedEndpoints.add(endpointId);
@@ -232,7 +232,7 @@ class NearbyService extends ChangeNotifier {
   }
 
   void _onDisconnected(String endpointId) {
-    debugPrint('[knkt] onDisconnected: $endpointId');
+    debugPrint('[Connect] onDisconnected: $endpointId');
     connectedEndpoints.remove(endpointId);
     connectedPeerNames.remove(endpointId);
     _pendingNames.remove(endpointId);
@@ -245,7 +245,7 @@ class NearbyService extends ChangeNotifier {
   void _onPayloadReceived(String endpointId, Payload payload) {
     if (payload.type != PayloadType.BYTES || payload.bytes == null) return;
     final peerUid = utf8.decode(payload.bytes!);
-    debugPrint('[knkt] Received UID from $endpointId: $peerUid');
+    debugPrint('[Connect] Received UID from $endpointId: $peerUid');
 
     connectedEndpoints.add(endpointId);
     final peer = _pendingNames[endpointId] ?? endpointId;
@@ -299,7 +299,7 @@ class NearbyService extends ChangeNotifier {
 
   void _setStatus(String message) {
     statusMessage = message;
-    debugPrint('[knkt] status: $message');
+    debugPrint('[Connect] status: $message');
     notifyListeners();
   }
 }

@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="kntk.png" alt="knkt logo" width="120">
+  <img src="kntk.png" alt="Connect logo" width="120">
 </p>
 
-<h1 align="center">knkt</h1>
+<h1 align="center">Connect</h1>
 
 <p align="center">
   <em>Don't just grow your skills.</em><br>
   <em>Grow your circle.</em>
 </p>
 
-**A Bluetooth-powered, AI-driven mobile platform built by students, for students.** knkt (pronounced "connect") passively scans for nearby peers, computes cosine similarity across skill embeddings and focus areas, and delivers a personalized match summary the moment two students with complementary profiles are in the same vicinity — turning physical proximity into meaningful connections for startups, research, and everything in between.
+**A Bluetooth-powered, AI-driven mobile platform built by students, for students.** Connect passively scans for nearby peers, computes cosine similarity across skill embeddings and focus areas, and delivers a personalized match summary the moment two students with complementary profiles are in the same vicinity — turning physical proximity into meaningful connections for startups, research, and everything in between.
 
 ---
 
@@ -21,11 +21,11 @@ Existing platforms like LinkedIn are built for remote, intentional networking. T
 
 ## Our Solution
 
-knkt bridges this gap with three core ideas:
+Connect bridges this gap with three core ideas:
 
-**Proximity as a signal.** If two students are in the same space, they already share context (same class, same event, same lab). knkt uses Bluetooth to detect these co-located peers passively in the background, with no QR codes, no usernames, no action required.
+**Proximity as a signal.** If two students are in the same space, they already share context (same class, same event, same lab). Connect uses Bluetooth to detect these co-located peers passively in the background, with no QR codes, no usernames, no action required.
 
-**AI-driven compatibility.** Rather than showing you everyone nearby, knkt runs a multi-dimensional matching algorithm that scores how well two students *complement* each other: do they have what the other needs? Are they working toward similar goals? Are they in the same domain? Only strong matches surface.
+**AI-driven compatibility.** Rather than showing you everyone nearby, Connect runs a multi-dimensional matching algorithm that scores how well two students *complement* each other: do they have what the other needs? Are they working toward similar goals? Are they in the same domain? Only strong matches surface.
 
 **Frictionless connection.** When a strong match is found, both students receive a push notification with a personalized, name-free AI-generated summary explaining *why* they'd work well together. Profiles stay anonymous until both students accept the match — only then are real identities revealed and a chat room opens instantly.
 
@@ -206,7 +206,7 @@ The backend is deployed on Railway using Nixpacks for automated Python 3.13 buil
 ## Project Structure
 
 ```
-knkt/
+connect/
 ├── mobile_app/              # Flutter application
 │   └── lib/
 │       ├── screens/         # Onboarding, dashboard, chat, edit profile
@@ -226,7 +226,7 @@ knkt/
 ## Future Directions
 
 - **Group matching.** Extend the algorithm to recommend teams of 3-5 students for hackathons, class projects, or startup formation, not just pairwise matches.
-- **Event-aware discovery.** Integrate with campus event calendars so knkt can surface especially relevant matches during hackathons, career fairs, or research symposia.
+- **Event-aware discovery.** Integrate with campus event calendars so Connect can surface especially relevant matches during hackathons, career fairs, or research symposia.
 - **Skill endorsements.** Allow connected students to endorse each other's skills, building a trust layer on top of self-reported profiles.
 - **Conversation starters.** Use the AI-generated summaries to suggest specific talking points or project ideas two matched students could explore together.
 - **Analytics dashboard.** Provide students with insights on their networking patterns, skill demand trends on campus, and which of their skills are most sought-after.

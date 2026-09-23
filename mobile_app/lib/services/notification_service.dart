@@ -53,7 +53,7 @@ class NotificationService {
   static Future<void> createDiscoveryChannel() async {
     if (Platform.isAndroid) {
       const channel = AndroidNotificationChannel(
-        'knkt_discovery',
+        'connect_discovery',
         'Background Discovery',
         description: 'Keeps Bluetooth active in the background',
         importance: Importance.low,
@@ -88,7 +88,7 @@ class NotificationService {
       '$peerName is around you',
       details,
     );
-    debugPrint('[knkt] notification: $peerName is nearby');
+    debugPrint('[Connect] notification: $peerName is nearby');
   }
 
   /// Show a general-purpose notification (used by FCM handlers).
@@ -111,6 +111,6 @@ class NotificationService {
     );
 
     await _plugin.show(id, title, body, details);
-    debugPrint('[knkt] notification shown: $title');
+    debugPrint('[Connect] notification shown: $title');
   }
 }

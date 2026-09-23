@@ -28,8 +28,8 @@ class BackgroundServiceManager {
         autoStart: false,
         isForegroundMode: true,
         foregroundServiceTypes: [AndroidForegroundType.connectedDevice],
-        notificationChannelId: 'knkt_discovery',
-        initialNotificationTitle: 'knkt',
+        notificationChannelId: 'connect_discovery',
+        initialNotificationTitle: 'Connect',
         initialNotificationContent: 'Discovering nearby people…',
       ),
       iosConfiguration: IosConfiguration(autoStart: false),
@@ -42,7 +42,7 @@ class BackgroundServiceManager {
     final running = await _service.isRunning();
     if (!running) {
       await _service.startService();
-      debugPrint('[knkt] background service started');
+      debugPrint('[Connect] background service started');
     }
   }
 
@@ -52,7 +52,7 @@ class BackgroundServiceManager {
     final running = await _service.isRunning();
     if (running) {
       _service.invoke('stop');
-      debugPrint('[knkt] background service stopped');
+      debugPrint('[Connect] background service stopped');
     }
   }
 }
@@ -71,7 +71,7 @@ Future<void> _onStart(ServiceInstance service) async {
     // Keep the foreground notification visible.
     await service.setAsForegroundService();
     service.setForegroundNotificationInfo(
-      title: 'knkt',
+      title: 'Connect',
       content: 'Discovering nearby people…',
     );
   }

@@ -59,7 +59,7 @@ class BackendService {
         return jsonDecode(response.body) as Map<String, dynamic>;
       }
     } catch (e) {
-      debugPrint('[knkt] getStudent failed: $e');
+      debugPrint('[Connect] getStudent failed: $e');
     }
     return null;
   }
@@ -80,7 +80,7 @@ class BackendService {
         return jsonDecode(response.body) as Map<String, dynamic>;
       }
     } catch (e) {
-      debugPrint('[knkt] updateStudent failed: $e');
+      debugPrint('[Connect] updateStudent failed: $e');
     }
     return null;
   }
@@ -99,7 +99,7 @@ class BackendService {
       final response = await http.delete(uri);
       return response.statusCode >= 200 && response.statusCode < 300;
     } catch (e) {
-      debugPrint('[knkt] clearUserData failed: $e');
+      debugPrint('[Connect] clearUserData failed: $e');
       return false;
     }
   }
@@ -113,7 +113,7 @@ class BackendService {
         return jsonDecode(response.body) as Map<String, dynamic>;
       }
     } catch (e) {
-      debugPrint('[knkt] getStudentByEmail failed: $e');
+      debugPrint('[Connect] getStudentByEmail failed: $e');
     }
     return null;
   }
@@ -129,7 +129,7 @@ class BackendService {
       );
       return response.statusCode >= 200 && response.statusCode < 300;
     } catch (e) {
-      debugPrint('[knkt] updateFcmToken failed: $e');
+      debugPrint('[Connect] updateFcmToken failed: $e');
       return false;
     }
   }
@@ -149,7 +149,7 @@ class BackendService {
         return ConnectionModel.fromJson(jsonDecode(response.body));
       }
     } catch (e) {
-      debugPrint('[knkt] createConnection failed: $e');
+      debugPrint('[Connect] createConnection failed: $e');
     }
     return null;
   }
@@ -163,7 +163,7 @@ class BackendService {
         return ConnectionModel.fromJson(jsonDecode(response.body));
       }
     } catch (e) {
-      debugPrint('[knkt] getConnection failed: $e');
+      debugPrint('[Connect] getConnection failed: $e');
     }
     return null;
   }
@@ -179,7 +179,7 @@ class BackendService {
         return list.map((j) => ConnectionModel.fromJson(j)).toList();
       }
     } catch (e) {
-      debugPrint('[knkt] getConnectionsForUser failed: $e');
+      debugPrint('[Connect] getConnectionsForUser failed: $e');
     }
     return null;
   }
@@ -195,7 +195,7 @@ class BackendService {
         return list.map((j) => ConnectionModel.fromJson(j)).toList();
       }
     } catch (e) {
-      debugPrint('[knkt] getAcceptedConnections failed: $e');
+      debugPrint('[Connect] getAcceptedConnections failed: $e');
     }
     return null;
   }
@@ -213,7 +213,7 @@ class BackendService {
         return ConnectionModel.fromJson(jsonDecode(response.body));
       }
     } catch (e) {
-      debugPrint('[knkt] acceptConnection failed: $e');
+      debugPrint('[Connect] acceptConnection failed: $e');
     }
     return null;
   }
@@ -226,7 +226,7 @@ class BackendService {
       final response = await http.post(uri);
       return response.statusCode >= 200 && response.statusCode < 300;
     } catch (e) {
-      debugPrint('[knkt] notifyReencounter failed: $e');
+      debugPrint('[Connect] notifyReencounter failed: $e');
       return false;
     }
   }
@@ -249,7 +249,7 @@ class BackendService {
         return jsonDecode(response.body) as Map<String, dynamic>;
       }
     } catch (e) {
-      debugPrint('[knkt] getChatMessages failed: $e');
+      debugPrint('[Connect] getChatMessages failed: $e');
     }
     return null;
   }
@@ -271,7 +271,7 @@ class BackendService {
         return jsonDecode(response.body) as Map<String, dynamic>;
       }
     } catch (e) {
-      debugPrint('[knkt] sendChatMessage failed: $e');
+      debugPrint('[Connect] sendChatMessage failed: $e');
     }
     return null;
   }
@@ -289,7 +289,7 @@ class BackendService {
         return jsonDecode(response.body) as Map<String, dynamic>;
       }
     } catch (e) {
-      debugPrint('[knkt] createChatRoom failed: $e');
+      debugPrint('[Connect] createChatRoom failed: $e');
     }
     return null;
   }

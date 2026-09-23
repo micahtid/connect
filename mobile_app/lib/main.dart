@@ -25,7 +25,7 @@ import 'theme.dart';
 /// from the FCM `notification` payload, so we only process data here.
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  debugPrint('[knkt] FCM background message: ${message.data}');
+  debugPrint('[Connect] FCM background message: ${message.data}');
 }
 
 void main() async {
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'knkt',
+      title: 'Connect',
       debugShowCheckedModeBanner: false,
       theme: buildAppTheme(),
       home: const AuthGate(),
@@ -131,7 +131,7 @@ class _AuthGateState extends State<AuthGate> {
         }
       }
     } catch (e) {
-      debugPrint('[knkt] profile recovery failed: $e');
+      debugPrint('[Connect] profile recovery failed: $e');
     }
   }
 
@@ -345,7 +345,7 @@ class _SignInPageState extends State<_SignInPage>
                     children: [
                       const Spacer(),
                       Text(
-                        'knkt',
+                        'Connect',
                         style: GoogleFonts.sora(
                           fontSize: 32,
                           fontWeight: FontWeight.w700,

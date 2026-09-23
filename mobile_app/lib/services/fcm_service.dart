@@ -17,7 +17,7 @@ class FcmService {
     try {
       // Request notification permission
       final settings = await _messaging.requestPermission();
-      debugPrint('[knkt] FCM permission: ${settings.authorizationStatus}');
+      debugPrint('[Connect] FCM permission: ${settings.authorizationStatus}');
 
       // Get token and register with server
       final token = await _messaging.getToken();
@@ -30,7 +30,7 @@ class FcmService {
 
       // Handle foreground messages — show a local notification
       FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-        debugPrint('[knkt] FCM foreground message: ${message.data}');
+        debugPrint('[Connect] FCM foreground message: ${message.data}');
         final connectionId = message.data['connection_id'] as String?;
         final roomId = message.data['room_id'] as String?;
 
@@ -38,7 +38,7 @@ class FcmService {
             message.notification?.title ??
             (roomId != null
                 ? 'Connection complete!'
-                : (connectionId != null ? 'New connection request!' : 'knkt'));
+                : (connectionId != null ? 'New connection request!' : 'Connect'));
         final body =
             message.notification?.body ??
             (roomId != null
@@ -56,16 +56,16 @@ class FcmService {
 
       // Handle background tap
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-        debugPrint('[knkt] FCM opened from background: ${message.data}');
+        debugPrint('[Connect] FCM opened from background: ${message.data}');
       });
     } catch (e) {
-      debugPrint('[knkt] FCM init error: $e');
+      debugPrint('[Connect] FCM init error: $e');
     }
   }
 
   Future<void> _registerToken(String token) async {
     if (_uid == null) return;
     await BackendService.updateFcmToken(_uid!, token);
-    debugPrint('[knkt] FCM token registered');
+    debugPrint('[Connect] FCM token registered');
   }
 }

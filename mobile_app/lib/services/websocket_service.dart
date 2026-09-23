@@ -34,7 +34,7 @@ class WebSocketService {
 
     try {
       _channel = WebSocketChannel.connect(uri);
-      debugPrint('[knkt] WebSocket connecting to $uri');
+      debugPrint('[Connect] WebSocket connecting to $uri');
 
       _channel!.stream.listen(
         (data) {
@@ -42,27 +42,27 @@ class WebSocketService {
             final event = jsonDecode(data as String) as Map<String, dynamic>;
             _handleEvent(event);
           } catch (e) {
-            debugPrint('[knkt] WebSocket parse error: $e');
+            debugPrint('[Connect] WebSocket parse error: $e');
           }
         },
         onDone: () {
-          debugPrint('[knkt] WebSocket closed, scheduling reconnect');
+          debugPrint('[Connect] WebSocket closed, scheduling reconnect');
           _scheduleReconnect();
         },
         onError: (error) {
-          debugPrint('[knkt] WebSocket error: $error');
+          debugPrint('[Connect] WebSocket error: $error');
           _scheduleReconnect();
         },
       );
     } catch (e) {
-      debugPrint('[knkt] WebSocket connect failed: $e');
+      debugPrint('[Connect] WebSocket connect failed: $e');
       _scheduleReconnect();
     }
   }
 
   void _handleEvent(Map<String, dynamic> event) {
     final type = event['type'] as String?;
-    debugPrint('[knkt] WebSocket event: $type');
+    debugPrint('[Connect] WebSocket event: $type');
     switch (type) {
       case 'match_found':
         onMatchFound?.call(event);

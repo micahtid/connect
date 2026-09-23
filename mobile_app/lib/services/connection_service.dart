@@ -73,7 +73,7 @@ class ConnectionService extends ChangeNotifier {
       return;
     }
 
-    debugPrint('[knkt] Creating connection: $myUid <-> $peerUid');
+    debugPrint('[Connect] Creating connection: $myUid <-> $peerUid');
     final conn = await BackendService.createConnection(myUid!, peerUid);
     if (conn != null) {
       connections[conn.connectionId] = conn;
